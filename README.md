@@ -4,7 +4,7 @@
 
 This is a solution to the [Multi step form on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-![Design preview for the Product preview card component coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Product preview card component coding challenge](./assets/images/Screenshot.png)
 
 ## Table of contents
 
