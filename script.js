@@ -173,6 +173,8 @@ const changePrice = () => {
 
 }
 
+const myServicesArray = Array.from(myServices);
+
 // Services
 myServices.forEach((ele, idx) => {
     ele.addEventListener('click', (e) => {
@@ -183,8 +185,8 @@ myServices.forEach((ele, idx) => {
         ele.childNodes[1].children[0].style.visibility = "visible";
 
         if(ele.classList.contains('active') && serviceType.childElementCount < 3){
-            const serviceText = ele.childNodes[3].children[0].innerText;
-            const servicePrice = ele.childNodes[5].innerText;
+            const serviceText = ele.children[1].children[0].innerText;
+            const servicePrice = ele.children[2].innerText;
 
             let newService = document.createElement('p');
             let newServicePrice = document.createElement('span');
@@ -192,14 +194,14 @@ myServices.forEach((ele, idx) => {
             newService.textContent = serviceText;
 
             newServicePrice.className = 'service-type-price';
-            newServicePrice.id = (serviceNum = serviceNum +1);
             newServicePrice.textContent = servicePrice;
             newService.appendChild(newServicePrice);
-
             serviceType.appendChild(newService);
-            lastAddedChild.push(newService);
-        }else{
+
+            lastAddedChild[idx] = newService;
+        }else if(!ele.classList.contains('active') && lastAddedChild[idx]){
             serviceType.removeChild(lastAddedChild[idx]);
+            lastAddedChild[idx] = null;
         }
 
     });
@@ -242,7 +244,8 @@ const getAllPrice = () => {
     
 }
 
-changePlan.addEventListener("click", () => swicthIcon.click());
+// Change plan button
+changePlan.addEventListener("click", () => moveSlider(-2));
 
 // Back button event
 backBtn.addEventListener("click", () => {
@@ -257,7 +260,6 @@ nextBtn.addEventListener("click", () => {
         mobileError.style.visibility = "hidden";
         mobileNum.style.borderColor = "";
         moveSlider(1);
-             
     }else{
         mobileError.style.visibility = "visible";
         mobileNum.style.borderColor = "hsl(354, 84%, 57%)";
