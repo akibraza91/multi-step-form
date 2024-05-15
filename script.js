@@ -25,6 +25,7 @@ const serviceType = document.querySelector(".service-type")
 const totalPrice = document.querySelector('.total-price');
 const changePlan = document.querySelector('.change-plan');
 const sliderButtons = document.querySelector('.slider-buttons');
+const totalType = document.querySelector('.total-type');
 
 let slideIdx = 0;
 const mobileRegex = /^[0-9]{10}$/;
@@ -130,12 +131,14 @@ swicthIcon.addEventListener("click", () => {
                 planType.innerText = priceCards[idx].childNodes[3].children[0].innerText + ' (Monthly)';
                 planPrice.textContent = priceCards[idx].childNodes[3].children[1].innerText;
                 totalPrice.textContent = priceCards[idx].childNodes[3].children[1].innerText;
+                totalType.innerText = '(per month)';
             }
             // If yearly plan
             if(planDuration.childNodes[5].classList.contains('active')){
                 planType.innerText = priceCards[idx].childNodes[3].children[0].innerText + ' (Yearly)';
                 planPrice.textContent = priceCards[idx].childNodes[3].children[1].innerText;
                 totalPrice.textContent = priceCards[idx].childNodes[3].children[1].innerText;
+                totalType.innerText = '(per year)';
             }
         }
     });
